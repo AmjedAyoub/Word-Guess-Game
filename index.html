@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Word-Guess-Game</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 id="title">Word-Guess-Game</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <h2 id="startGame">Press any key to start the game!</h2>
+                </div>
+                <div class="row">
+                    <h3>Word: <span id="word"></span></h3>
+                </div>
+                <div class="row">
+                    <h3>Wins: <span id="win"></span></h3>
+                </div>
+                <div class="row">
+                    <h3>Losses: <span id="lose"></span></h3>
+                </div>
+                <div class="row">
+                    <h3>Lives: <span id="live"></span></h3>
+                </div>
+                <div class="row">
+                    <h3>Charecters you guessed: <span id="char"></span></h3>
+                </div> 
+                <div class="row">
+                    <h3><span id="new"></span></h3>
+                </div>
+                
+            </div>
+            <div class="col-sm-6">
+                <img class="gamePicture" id="gamePicture" src="assets/images/game.PNG">
+                <img class = "headPicture" id="head" src="assets/images/head.jpg">
+                <img class = "armLPicture" id="armL" src="assets/images/armL.PNG">
+                <img class = "armRPicture" id="armR" src="assets/images/armR.PNG">
+                <img class = "legLPicture" id="legL" src="assets/images/legL.PNG">
+                <img class = "legRPicture" id="legR" src="assets/images/legR.PNG"> 
+                <img class = "winPicture"  src="assets/images/win.PNG">
+                <img class = "losePicture" src="assets/images/lose.PNG">                
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>

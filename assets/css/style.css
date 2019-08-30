@@ -1,0 +1,65 @@
+body{
+    background-color: black;
+    color: darkgoldenrod;
+}
+
+.row{
+    margin-bottom: 4%;
+}
+
+#gamePicture{
+    float: right;
+    margin-bottom: 30px;
+    z-index: -1;
+}
+
+#head{
+    z-index: 1;
+    position: absolute;
+    top: 18%;
+    left: 59%;
+}
+#armL{
+    z-index: 1;
+    position: absolute;
+    top: 26%;
+    left: 53%;
+}
+ #armR{
+    z-index: 1;
+    position: absolute;
+    top: 26%;
+    left: 65%; 
+}
+ #legL{
+    z-index: 1;
+    position: absolute;
+    top: 39%;
+    left: 53%;
+}
+#legR{
+    z-index: 1;
+    position: absolute;
+    top: 39%;
+    left: 65%; 
+}
+.winPicture{
+    z-index: 2;
+    position: absolute;
+    top: 18%;
+    left: 55%; 
+    width: 17%;
+}
+.losePicture{
+    z-index: 2;
+    position: absolute;
+    top: 18%;
+    left: 55%; 
+    width: 18%;
+}
+                
+#title{
+    text-align: center;
+    color: coral;
+    margin-bottom: 5%;
+}
