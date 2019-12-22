@@ -1,6 +1,6 @@
 
 //the array of words
-var words=["area","book","business","case","child","company","place","problem","student"]
+var words=["area","book","business","case","child","company","place","problem","student","avenue","awkward","azure","bagpipes","bandwagon","beekeeper","bikini","blitz","blizzard","boggle","bookworm","boxcar","boxful","buffalo","buzzing","buzzwords","crypt","cycle","duplex","equip","fishhook","fixable","flopping","fluffiness","funny","galaxy","gossip","injury","ivory","jackpot","joyful","juicy","kayak","lengths","lucky","luxury","matrix","microwave","nightclub","nowadays","pixel","puppy","puzzling","quiz","scratch","staff","strength","stretch","subway","swivel","syndrome","thriftless","thumbscrew","transcript","unknown","unworthy","unzip","uptown","vaporize","vixen","vodka","walkway","wave","whiskey","witchcraft","wizard","wristwatch","yoked","youthful","yummy","zephyr","zigzag","zigzagging","zilch","zipper","zodiac","zombie"]
 //the computer random choise
 var choise="";
 //the word that the computer choose and pushed as charachters in ths array
