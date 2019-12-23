@@ -16,7 +16,9 @@ var win=0;
 //how many losses
 var lose=0;
 //how many lives and as a start each user has 5 laves
-var live=5;
+var live=6;
+var intervalId;
+var time = 2;
 
 var wordid=document.getElementById("word");
 var winid=document.getElementById("win");
@@ -25,6 +27,7 @@ var liveid=document.getElementById("live");
 var charid=document.getElementById("char");
 var startGameid=document.getElementById("startGame");
 var newg=document.getElementById("new");
+var progBar=$("#progBar");
 var picGame =$(".gamePicture");
 var head = $(".headPicture");
 var armL = $(".armLPicture");
@@ -33,13 +36,13 @@ var legL = $(".legLPicture");
 var legR = $(".legRPicture");
 var winpic = $(".winPicture");
 var losepic = $(".losePicture");
-head.animate({opacity: "0.00"});
-armL.animate({opacity: "0.00"});
-armR.animate({opacity: "0.00"});
-legL.animate({opacity: "0.00"});
-legR.animate({opacity: "0.00"});
-winpic.animate({opacity: "0.00"});
-losepic.animate({opacity: "0.00"});
+head.css({opacity: "0.00"});
+armL.css({opacity: "0.00"});
+armR.css({opacity: "0.00"});
+legL.css({opacity: "0.00"});
+legR.css({opacity: "0.00"});
+winpic.css({opacity: "0.00"});
+losepic.css({opacity: "0.00"});
 
 var audiogame = document.createElement("audio");
 audiogame.setAttribute("src", "assets/images/game.mp3");
@@ -47,12 +50,14 @@ var audiolose = document.createElement("audio");
 audiolose.setAttribute("src", "assets/images/lose.mp3");
 var audioElement = document.createElement("audio");
 audioElement.setAttribute("src", "assets/images/won.mp3");
+var audioScratch = document.createElement("audio");
+audioScratch.setAttribute("src", "assets/images/scratch.mp3");
 
 // function to start a new game
 function start(){
     choise = words[Math.floor(Math.random() * words.length)];
     console.log(choise);
-    live=5;
+    live=6;
     newWord=[];
     newWordDash=[];
     charGuessed=[];
@@ -60,7 +65,12 @@ function start(){
         newWord.push(choise[index])
         newWordDash.push("_");
     }
-    wordid.textContent=newWordDash;
+    let str="";
+    for (let i = 0; i < newWordDash.length; i++) {
+        str=str+newWordDash[i]+" ";
+    }
+    
+    wordid.textContent=str;
     winid.textContent=win;
     loseid.textContent=lose;
     liveid.textContent=live;
@@ -70,23 +80,28 @@ function start(){
     picGame.attr("src","assets/images/base.jpg")
     console.log(newWord);
     isNewGame=false;
-    head.animate({opacity: "0.00"});
-    armL.animate({opacity: "0.00"});
-    armR.animate({opacity: "0.00"});
-    legL.animate({opacity: "0.00"});
-    legR.animate({opacity: "0.00"});
-    winpic.animate({opacity: "0.00"});
-    losepic.animate({opacity: "0.00"});
+    head.css({opacity: "0.00"});
+    armL.css({opacity: "0.00"});
+    armR.css({opacity: "0.00"});
+    legL.css({opacity: "0.00"});
+    legR.css({opacity: "0.00"});
+    winpic.css({opacity: "0.00"});
+    losepic.css({opacity: "0.00"});
+    progBar.css({width: "100%"});
+    progBar.css({background: "green"});
     audioElement.pause();
     audiolose.pause();
     audiogame.play();
 }
 
 document.onkeyup = function(event) {
+ 
     if(isNewGame){
         start();
     }
-    else{
+    else{ 
+      if(event.key==="a"||event.key==="b"||event.key==="c"||event.key==="d"||event.key==="e"||event.key==="f"||event.key==="g"||event.key==="h"||event.key==="i"||event.key==="j"||event.key==="k"||event.key==="l"||event.key==="m"||event.key==="n"||event.key==="o"||event.key==="p"||event.key==="q"||event.key==="r"||event.key==="s"||event.key==="t"||event.key==="u"||event.key==="v"||event.key==="w"||event.key==="x"||event.key==="y"||event.key==="z"){
+  
         userChoise =event.key;
         if(charGuessed.indexOf(userChoise)===-1)
         {
@@ -97,19 +112,23 @@ document.onkeyup = function(event) {
             for(var j=0;j<newWord.length;j++){
                 if(newWord[j]===userChoise){
                 newWordDash[j]=userChoise;
+                } 
+                let str="";
+                for (let i = 0; i < newWordDash.length; i++) {
+                    str=str+newWordDash[i]+" ";
                 }
-                wordid.textContent=newWordDash;
+                wordid.textContent=str;
             }
             if(newWordDash.indexOf("_")===-1)
             {
                 isNewGame=true;
                 win++;
-                head.animate({opacity: "0.00"});
-                armL.animate({opacity: "0.00"});
-                armR.animate({opacity: "0.00"});
-                legL.animate({opacity: "0.00"});
-                legR.animate({opacity: "0.00"});
-                winpic.animate({opacity: "1"});
+                head.css({opacity: "0.00"});
+                armL.css({opacity: "0.00"});
+                armR.css({opacity: "0.00"});
+                legL.css({opacity: "0.00"});
+                legR.css({opacity: "0.00"});
+                winpic.css({opacity: "1"});
                 audiogame.pause();
                 audioElement.play();
                 startGameid.textContent="Gongrats you won!!!";                
@@ -118,31 +137,116 @@ document.onkeyup = function(event) {
             }
         }
         else{
-            if(live>-1){
+            if(live>0){
                 live--;
                 liveid.textContent=live;
-                if(live===4){
-                    head.animate({opacity: "1"});
+                if(live===5){
+                  audiogame.pause();
+                  progBar.css({width: "85%"});
+                    progBar.css({"background-color": "greenyellow"});
+                    clearInterval(intervalId);
+                    intervalId = setInterval(function () {
+                        audioScratch.play();
+                      if (time > 0) {
+                        time--;
+                      }
+                      else {
+                        audioScratch.pause();
+                        audiogame.play();
+                        clearInterval(intervalId);
+                        time = 2;
+                      }
+                    }, 1000);
+                    head.css({opacity: "1"});
+                    
+                }
+                else if(live===4){
+                  audiogame.pause();
+                  progBar.css({width: "65%"});
+                  progBar.css({"background-color": "orange"});
+                    clearInterval(intervalId);
+                    intervalId = setInterval(function () {
+                        audioScratch.play();
+                      if (time > 0) {
+                        time--;
+                      }
+                      else {
+                        audioScratch.pause();
+                        audiogame.play();
+                        clearInterval(intervalId);
+                        time = 2;
+                      }
+                    }, 1000);
+                    armL.css({opacity: "1"});
+                
                 }
                 else if(live===3){
-                    armL.animate({opacity: "1"});
+                  audiogame.pause();
+                  progBar.css({width: "45%"});
+                  progBar.css({"background-color": "orangered"});
+                    clearInterval(intervalId);
+                    intervalId = setInterval(function () {
+                        audioScratch.play();
+                      if (time > 0) {
+                        time--;
+                      }
+                      else {
+                        audioScratch.pause();
+                        audiogame.play();
+                        clearInterval(intervalId);
+                        time = 2;
+                      }
+                    }, 1000);
+                    armR.css({opacity: "1"});
+                
+                }else if(live===2){
+                  audiogame.pause();
+                  progBar.css({width: "25%"});
+                  progBar.css({"background-color": "red"});
+                    clearInterval(intervalId);
+                    intervalId = setInterval(function () {
+                        audioScratch.play();
+                      if (time > 0) {
+                        time--;
+                      }
+                      else {
+                        audioScratch.pause();
+                        audiogame.play();
+                        clearInterval(intervalId);
+                        time = 2;
+                      }
+                    }, 1000);
+                    legL.css({opacity: "1"});
+                
+                  }else if(live===1){
+                    audiogame.pause();
+                  progBar.css({width: "5%"});
+                  progBar.css({"background-color": "darkred"});
+                    clearInterval(intervalId);
+                    intervalId = setInterval(function () {
+                        audioScratch.play();
+                      if (time > 0) {
+                        time--;
+                      }
+                      else {
+                        audioScratch.pause();
+                        audiogame.play();
+                        clearInterval(intervalId);
+                        time = 2;
+                      }
+                    }, 1000);
+                    legR.css({opacity: "1"});
+                
                 }
-                else if(live===2){
-                    armR.animate({opacity: "1"});
-                }else if(live===1){
-                    legL.animate({opacity: "1"});
-                }else if(live===0){
-                    legR.animate({opacity: "1"});
-                }
-                if(live===-1)
+                if(live===0)
                 {
-                    head.animate({opacity: "0.00"});
-                    armL.animate({opacity: "0.00"});
-                    armR.animate({opacity: "0.00"});
-                    legL.animate({opacity: "0.00"});
-                    legR.animate({opacity: "0.00"});
-                    losepic.animate({opacity: "1"});
-                    startGameid.textContent="Ahhh try again!!!";                     
+                    head.css({opacity: "0.00"});
+                    armL.css({opacity: "0.00"});
+                    armR.css({opacity: "0.00"});
+                    legL.css({opacity: "0.00"});
+                    legR.css({opacity: "0.00"});
+                    losepic.css({opacity: "1"});
+                    startGameid.textContent="Ahhh try again!!! The correct word was "+choise;                     
                     lose++;
                     audiogame.pause();
                     audiolose.play();
@@ -154,4 +258,5 @@ document.onkeyup = function(event) {
         }
     }
     }
+  }
 }

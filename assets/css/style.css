@@ -3,8 +3,31 @@ body{
     color: darkgoldenrod;
 }
 
-.row{
-    margin-bottom: 4%;
+#rowWin{
+    color: chartreuse;
+}
+
+#rowLoss{
+    color: crimson;
+}
+
+#rowLive{
+    color: darkorange;
+}
+
+#prog{
+    width: 40%;
+}
+#progBar{
+    background-color: green;
+}
+
+.rowG{
+    margin-bottom: 5%;
+}
+
+.container{
+    min-width: 90%;
 }
 
 #gamePicture{
@@ -16,50 +39,51 @@ body{
 #head{
     z-index: 1;
     position: absolute;
-    top: 18%;
-    left: 59%;
+    top: 20%;
+    left: 49%;
 }
 #armL{
     z-index: 1;
     position: absolute;
-    top: 26%;
-    left: 53%;
+    top: 30%;
+    left: 57%;
 }
  #armR{
     z-index: 1;
     position: absolute;
-    top: 26%;
-    left: 65%; 
-}
+    top: 30%;
+    left: 44%;
+ }
+
  #legL{
     z-index: 1;
     position: absolute;
-    top: 39%;
-    left: 53%;
+    top: 41%;
+    left: 42%;
 }
 #legR{
     z-index: 1;
     position: absolute;
-    top: 39%;
-    left: 65%; 
+    top: 41%;
+    left: 56%;
 }
 .winPicture{
     z-index: 2;
     position: absolute;
     top: 18%;
-    left: 55%; 
+    left: 47%; 
     width: 17%;
 }
 .losePicture{
     z-index: 2;
     position: absolute;
     top: 18%;
-    left: 55%; 
+    left: 46%;
     width: 18%;
 }
                 
 #title{
     text-align: center;
     color: coral;
-    margin-bottom: 5%;
+    margin-bottom: 1%;
 }
