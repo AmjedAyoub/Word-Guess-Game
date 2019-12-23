@@ -18,6 +18,11 @@ body{
 #prog{
     width: 40%;
 }
+
+#mute{
+    float: left;
+    width: 150px;
+}
 #progBar{
     background-color: green;
 }

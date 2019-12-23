@@ -19,6 +19,7 @@ var lose=0;
 var live=6;
 var intervalId;
 var time = 2;
+var mute = false;
 
 var wordid=document.getElementById("word");
 var winid=document.getElementById("win");
@@ -28,6 +29,7 @@ var charid=document.getElementById("char");
 var startGameid=document.getElementById("startGame");
 var newg=document.getElementById("new");
 var progBar=$("#progBar");
+var muteBtn=$("#mute");
 var picGame =$(".gamePicture");
 var head = $(".headPicture");
 var armL = $(".armLPicture");
@@ -89,10 +91,26 @@ function start(){
     losepic.css({opacity: "0.00"});
     progBar.css({width: "100%"});
     progBar.css({background: "green"});
+    if(!mute){
     audioElement.pause();
     audiolose.pause();
-    audiogame.play();
+    audiogame.play();}
 }
+
+$("#mute").click(function () {
+  if(!mute){
+    $("#mute").text("Unmute");
+    audioElement.pause();
+    audiolose.pause();
+    audiogame.pause();
+    audioScratch.pause();
+      mute=true;
+  }
+  else{
+    $("#mute").text("Mute");
+    mute=false;
+  }
+  });
 
 document.onkeyup = function(event) {
  
@@ -129,8 +147,9 @@ document.onkeyup = function(event) {
                 legL.css({opacity: "0.00"});
                 legR.css({opacity: "0.00"});
                 winpic.css({opacity: "1"});
+                if(!mute){
                 audiogame.pause();
-                audioElement.play();
+                audioElement.play();}
                 startGameid.textContent="Gongrats you won!!!";                
                 isNewGame=true;
                 newg.textContent="Press any key to start a new game";
@@ -140,19 +159,22 @@ document.onkeyup = function(event) {
             if(live>0){
                 live--;
                 liveid.textContent=live;
+                if(!mute){
+                audiogame.pause();}
                 if(live===5){
-                  audiogame.pause();
                   progBar.css({width: "85%"});
                     progBar.css({"background-color": "greenyellow"});
                     clearInterval(intervalId);
                     intervalId = setInterval(function () {
-                        audioScratch.play();
+                      if(!mute){
+                        audioScratch.play();}
                       if (time > 0) {
                         time--;
                       }
                       else {
+                        if(!mute){
                         audioScratch.pause();
-                        audiogame.play();
+                        audiogame.play();}
                         clearInterval(intervalId);
                         time = 2;
                       }
@@ -161,18 +183,19 @@ document.onkeyup = function(event) {
                     
                 }
                 else if(live===4){
-                  audiogame.pause();
                   progBar.css({width: "65%"});
                   progBar.css({"background-color": "orange"});
                     clearInterval(intervalId);
                     intervalId = setInterval(function () {
-                        audioScratch.play();
+                      if(!mute){
+                        audioScratch.play();}
                       if (time > 0) {
                         time--;
                       }
                       else {
+                        if(!mute){
                         audioScratch.pause();
-                        audiogame.play();
+                        audiogame.play();}
                         clearInterval(intervalId);
                         time = 2;
                       }
@@ -181,18 +204,18 @@ document.onkeyup = function(event) {
                 
                 }
                 else if(live===3){
-                  audiogame.pause();
                   progBar.css({width: "45%"});
                   progBar.css({"background-color": "orangered"});
                     clearInterval(intervalId);
                     intervalId = setInterval(function () {
-                        audioScratch.play();
+                      if(!mute){audioScratch.play();}
                       if (time > 0) {
                         time--;
                       }
                       else {
+                        if(!mute){
                         audioScratch.pause();
-                        audiogame.play();
+                        audiogame.play();}
                         clearInterval(intervalId);
                         time = 2;
                       }
@@ -200,18 +223,18 @@ document.onkeyup = function(event) {
                     armR.css({opacity: "1"});
                 
                 }else if(live===2){
-                  audiogame.pause();
                   progBar.css({width: "25%"});
                   progBar.css({"background-color": "red"});
                     clearInterval(intervalId);
                     intervalId = setInterval(function () {
-                        audioScratch.play();
+                      if(!mute){audioScratch.play();}
                       if (time > 0) {
                         time--;
                       }
                       else {
+                        if(!mute){
                         audioScratch.pause();
-                        audiogame.play();
+                        audiogame.play();}
                         clearInterval(intervalId);
                         time = 2;
                       }
@@ -219,18 +242,18 @@ document.onkeyup = function(event) {
                     legL.css({opacity: "1"});
                 
                   }else if(live===1){
-                    audiogame.pause();
                   progBar.css({width: "5%"});
                   progBar.css({"background-color": "darkred"});
                     clearInterval(intervalId);
                     intervalId = setInterval(function () {
-                        audioScratch.play();
+                      if(!mute){audioScratch.play();}
                       if (time > 0) {
                         time--;
                       }
                       else {
+                        if(!mute){
                         audioScratch.pause();
-                        audiogame.play();
+                        audiogame.play();}
                         clearInterval(intervalId);
                         time = 2;
                       }
@@ -246,10 +269,12 @@ document.onkeyup = function(event) {
                     legL.css({opacity: "0.00"});
                     legR.css({opacity: "0.00"});
                     losepic.css({opacity: "1"});
-                    startGameid.textContent="Ahhh try again!!! The correct word was "+choise;                     
+                    startGameid.textContent="Ahhh try again!!! The correct word was"; 
+                    wordid.textContent=choise;                    
                     lose++;
+                    if(!mute){
                     audiogame.pause();
-                    audiolose.play();
+                    audiolose.play();}
                     isNewGame=true;
                     newg.textContent="Press any key to start a new game";
                 }
