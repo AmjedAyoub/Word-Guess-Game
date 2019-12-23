@@ -109,6 +109,15 @@ $("#mute").click(function () {
   else{
     $("#mute").text("Mute");
     mute=false;
+    if(startGameid.textContent==="Gongrats you won!!!"){
+      audioElement.play();
+    }
+    if(startGameid.textContent==="Ahhh try again!!! The correct word was"){
+      audiolose.play();
+    }
+    if(startGameid.textContent==="Good Luck!!!"){
+      audiogame.play();
+    }
   }
   });
 
