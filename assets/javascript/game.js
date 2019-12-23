@@ -58,6 +58,7 @@ audioScratch.setAttribute("src", "assets/images/scratch.mp3");
 // function to start a new game
 function start(){
     choise = words[Math.floor(Math.random() * words.length)];
+    choise = choise.toUpperCase();
     console.log(choise);
     live=6;
     newWord=[];
@@ -65,7 +66,7 @@ function start(){
     charGuessed=[];
     for (let index = 0; index < choise.length; index++) {
         newWord.push(choise[index])
-        newWordDash.push("_");
+        newWordDash.push("__");
     }
     let str="";
     for (let i = 0; i < newWordDash.length; i++) {
@@ -82,6 +83,7 @@ function start(){
     picGame.attr("src","assets/images/base.jpg")
     console.log(newWord);
     isNewGame=false;
+    $("#word").css({color:"darkgoldenrod"});
     head.css({opacity: "0.00"});
     armL.css({opacity: "0.00"});
     armR.css({opacity: "0.00"});
@@ -109,7 +111,7 @@ $("#mute").click(function () {
   else{
     $("#mute").text("Mute");
     mute=false;
-    if(startGameid.textContent==="Gongrats you won!!!"){
+    if(startGameid.textContent==="Good job you won!!!"){
       audioElement.play();
     }
     if(startGameid.textContent==="Ahhh try again!!! The correct word was"){
@@ -127,9 +129,10 @@ document.onkeyup = function(event) {
         start();
     }
     else{ 
-      if(event.key==="a"||event.key==="b"||event.key==="c"||event.key==="d"||event.key==="e"||event.key==="f"||event.key==="g"||event.key==="h"||event.key==="i"||event.key==="j"||event.key==="k"||event.key==="l"||event.key==="m"||event.key==="n"||event.key==="o"||event.key==="p"||event.key==="q"||event.key==="r"||event.key==="s"||event.key==="t"||event.key==="u"||event.key==="v"||event.key==="w"||event.key==="x"||event.key==="y"||event.key==="z"){
+      var select = (event.key).toUpperCase();
+      if(select==="A"||select==="B"||select==="C"||select==="D"||select==="E"||select==="F"||select==="G"||select==="H"||select==="I"||select==="J"||select==="K"||select==="L"||select==="M"||select==="N"||select==="O"||select==="P"||select==="Q"||select==="R"||select==="S"||select==="T"||select==="U"||select==="V"||select==="W"||select==="X"||select==="Y"||select==="Z"){
   
-        userChoise =event.key;
+        userChoise =select;
         if(charGuessed.indexOf(userChoise)===-1)
         {
             charGuessed.push(userChoise);
@@ -146,7 +149,7 @@ document.onkeyup = function(event) {
                 }
                 wordid.textContent=str;
             }
-            if(newWordDash.indexOf("_")===-1)
+            if(newWordDash.indexOf("__")===-1)
             {
                 isNewGame=true;
                 win++;
@@ -159,7 +162,9 @@ document.onkeyup = function(event) {
                 if(!mute){
                 audiogame.pause();
                 audioElement.play();}
-                startGameid.textContent="Gongrats you won!!!";                
+                startGameid.textContent="Gongrats you won!!!";
+                $("#word").css({color:"chartreuse"});
+                wordid.textContent=choise;                  
                 isNewGame=true;
                 newg.textContent="Press any key to start a new game";
             }
@@ -172,7 +177,7 @@ document.onkeyup = function(event) {
                 audiogame.pause();}
                 if(live===5){
                   progBar.css({width: "85%"});
-                    progBar.css({"background-color": "greenyellow"});
+                    progBar.css({"background-color": "greenyellow"});  
                     clearInterval(intervalId);
                     intervalId = setInterval(function () {
                       if(!mute){
@@ -279,6 +284,7 @@ document.onkeyup = function(event) {
                     legR.css({opacity: "0.00"});
                     losepic.css({opacity: "1"});
                     startGameid.textContent="Ahhh try again!!! The correct word was"; 
+                    $("#word").css({color:"crimson"});    
                     wordid.textContent=choise;                    
                     lose++;
                     if(!mute){
