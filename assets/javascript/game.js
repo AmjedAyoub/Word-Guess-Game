@@ -162,7 +162,7 @@ document.onkeyup = function(event) {
                 if(!mute){
                 audiogame.pause();
                 audioElement.play();}
-                startGameid.textContent="Gongrats you won!!!";
+                startGameid.textContent="Good job you won!!!";
                 $("#word").css({color:"chartreuse"});
                 wordid.textContent=choise;                  
                 isNewGame=true;
