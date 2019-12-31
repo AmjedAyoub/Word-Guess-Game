@@ -34,9 +34,6 @@ body{
     margin-bottom: 5%;
 }
 
-.container{
-    min-width: 90%;
-}
 
 #gamePicture{
     float: right;
@@ -46,52 +43,105 @@ body{
 
 #head{
     z-index: 1;
-    position: absolute;
-    top: 20%;
-    left: 49%;
+    position: relative;
+    top: 21%;
+    left: 73%;
 }
 #armL{
     z-index: 1;
-    position: absolute;
-    top: 30%;
-    left: 57%;
+    position: relative;
+    top: 24%;
+    left: 64%;
 }
  #armR{
     z-index: 1;
-    position: absolute;
-    top: 30%;
-    left: 44%;
+    position: relative;
+    top: 24%;
+    left: 31%;
  }
 
  #legL{
     z-index: 1;
-    position: absolute;
-    top: 41%;
-    left: 42%;
+    position: relative;
+    top: 37%;
+    left: 13%;
 }
 #legR{
     z-index: 1;
-    position: absolute;
-    top: 41%;
-    left: 56%;
+    position: relative;
+    top: 38%;
+    left: 12%;
 }
 .winPicture{
     z-index: 2;
-    position: absolute;
-    top: 18%;
-    left: 47%; 
+    position: relative;
+    top: -2%;
+    left: 73%; 
     width: 17%;
 }
 .losePicture{
     z-index: 2;
-    position: absolute;
-    top: 18%;
-    left: 46%;
+    position: relative;
+    top: -4%;
+    left: 54%;
     width: 18%;
+}
+.gamepic{
+    background-image: url(../images/base.jpg);
+    min-height: 600px;
+    min-width: 380px;
 }
                 
 #title{
     text-align: center;
     color: coral;
     margin-bottom: 1%;
+}
+
+
+@media screen and (max-width: 980px) {
+
+   
+    .gamepic{
+        min-height: 600px;
+        min-width: 380px;
+    }
+    
+    #head{
+        top: 21%;
+        left: 73%;
+    }
+    #armL{
+        top: 24%;
+        left: 64%;
+    }
+     #armR{
+        top: 24%;
+        left: 31%;
+     }
+    
+     #legL{
+        top: 37%;
+        left: 13%;
+    }
+    #legR{
+        top: 38%;
+        left: 12%;
+    }
+    .winPicture{
+        top: -2%;
+        left: 73%; 
+        width: 17%;
+    }
+    .losePicture{
+        top: -4%;
+        left: 54%;
+        width: 18%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 640px) {
 }
