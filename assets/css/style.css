@@ -47,12 +47,14 @@ body{
     top: 21%;
     left: 73%;
 }
+
 #armL{
     z-index: 1;
     position: relative;
     top: 24%;
     left: 64%;
 }
+
  #armR{
     z-index: 1;
     position: relative;
